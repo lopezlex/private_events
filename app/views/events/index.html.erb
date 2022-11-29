@@ -1,0 +1,19 @@
+<h4>Events</h4>
+<section class="admin"> 
+  <%= link_to "Add New Event", new_event_path, class: "button"%>
+</section>
+<% @events.each do |event|%>
+  <section class="event">
+    <div class="image">
+      <%= image_tag "ninjas.png" %>
+    </div>
+    <div class="summary">
+        <h2><%= link_to event.name, event_path(event) %></h2>
+        <h3><%= day_and_time(event) %> in <%= event.location%>:</h3>
+        <p>
+          <%= truncate(event.description, length: 35, separator: ' ') %> 
+        </p>
+    </div>
+  </section>
+<%end%>
+  
