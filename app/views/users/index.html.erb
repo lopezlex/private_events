@@ -1,0 +1,10 @@
+
+<ul>
+  <% @users.each do |user|%>
+    <li>
+      <%= link_to user.email, user %>
+      created
+      <%= time_ago_in_words(user.created_at)%> ago
+    </li>
+  <%end%>
+</ul>

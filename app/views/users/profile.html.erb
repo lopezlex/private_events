@@ -1,0 +1,58 @@
+
+
+<section class="user">
+  <h2><%= mail_to(@user.email) %></h2>
+
+  <div class="actions">
+    <%= link_to "Edit Account", edit_user_registration_path(@user), class: "button edit" %>
+    <%= link_to "Delete Account", user_registration_path, method: :delete, data: {confirm: 'Are you sure?'}, class: "button delete" %>
+  </div>
+
+  <% if @attended_events.present? %>
+      <h3>Attended events</h3>
+      <% if @attended_events.upcoming.present?%>
+        <h4>Upcoming</h4>
+        <% @attended_events.upcoming.each do |event|%>
+          <div class="registration">
+            <div class="name">
+              <%= link_to event.name, event %>  <%= time_ago_in_words(event.created_at) %> ago
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+      <% if @attended_events.past.present?%>
+        <h4>Past</h4>
+        <% @attended_events.past.each do |event|%>
+          <div class="registration">
+            <div class="name">
+              <%= link_to event.name, event %>  <%= time_ago_in_words(event.created_at) %> ago
+            </div>
+          </div>
+        <%end%>
+      <%end%>
+  <%end%>
+
+  <%if @created_events.present? %>
+    <h3>Created Events</h3>
+    <%if @created_events.upcoming.present? %>
+      <h4>Upcoming</h4>
+      <% @created_events.upcoming.each do |event|%>
+        <div class="registration">
+          <div class="name">
+            <%= link_to event.name, event %>  <%= time_ago_in_words(event.created_at) %> ago
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+    <%if @created_events.past.present? %>
+      <h4>Past</h4>
+      <% @created_events.past.each do |event|%>
+        <div class="registration">
+          <div class="name">
+            <%= link_to event.name, event %>  <%= time_ago_in_words(event.created_at) %> ago
+          </div>
+        </div>
+      <%end%>
+    <%end%>
+  <%end%>
+</section>

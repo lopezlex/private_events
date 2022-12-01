@@ -1,19 +1,23 @@
-<h4>Events</h4>
-<section class="admin"> 
-  <%= link_to "Add New Event", new_event_path, class: "button"%>
-</section>
-<% @events.each do |event|%>
-  <section class="event">
-    <div class="image">
-      <%= image_tag "ninjas.png" %>
-    </div>
-    <div class="summary">
-        <h2><%= link_to event.name, event_path(event) %></h2>
-        <h3><%= day_and_time(event) %> in <%= event.location%>:</h3>
-        <p>
-          <%= truncate(event.description, length: 35, separator: ' ') %> 
-        </p>
-    </div>
-  </section>
-<%end%>
+
+<div class="row">
+  <% @events.each do |event|%>
+    <% unless event.status == 'private' %>
+      <div class="col-sm-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h4 class="card-title text-dark"><%= link_to event.name, event_path(event) %></h4>
+            <p class="card-text text-muted">
+              <%= truncate(event.description, length: 100, separator: ' ') %>
+            </p>
+          </div>
+          <div class="card-footer">
+            <p class="card-footer-item"><%= day_and_time(event) %> in <%= event.location%></p>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <% end %>
+</div>
+
+
   

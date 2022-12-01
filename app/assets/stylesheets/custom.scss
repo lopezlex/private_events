@@ -35,6 +35,16 @@ $secondary: $dark-gray;
 
 // Custom CSS
 
+.app-logo{
+	font-size: 2rem;
+	margin-right: .5rem;
+	color: $blue;
+	&:hover{
+		color: $off-white;
+		text-decoration: none;
+	}
+}
+
 .content {
 	@extend .container;
 }
@@ -42,7 +52,7 @@ $secondary: $dark-gray;
 // Header and Nav
 
 header {
-	background-color: $orange;
+	background-color: $dark-gray;
 	padding: 0.5rem;
 	margin-bottom: 3rem;
 

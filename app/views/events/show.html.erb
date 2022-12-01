@@ -1,0 +1,34 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card p-3">
+        <h3><%= @event.name %></h3>
+        <h5><%= day_and_time(@event) %> in <%= @event.location%></h5>
+        <p><%= @event.description%> </p>
+
+        <% if current_user == @event.creator %>
+          <section>
+            <%= link_to "Edit", edit_event_path(@event), class: "button"%>
+            <%= link_to "Delete", @event, class: "button", method: :delete, data: {confirm: "Really?!"} %>
+          </section>
+        <%else%>
+          <div class="register">
+            <%= register_or_unregister_button(@event, @register)%>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+    <% if @attendees.present?%>
+      <div class="col-4">
+        <div class="card p-3">
+          <h3>Attendees</h3>
+          <% @attendees.each do |user|%>
+            <p><%= user.email %></p>
+          <% end %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+</div>

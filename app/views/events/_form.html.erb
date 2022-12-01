@@ -18,6 +18,12 @@
       <%= f.label :starts_at%>
       <%= f.datetime_select :starts_at, {ampm: true}, {class: "datetime"} %>
     </div>
+
+    <div>
+      <%= f.label :status%>
+      <%= f.select :status, ['public','private'], selected: 'public' %>
+    </div>
+
     <div>
       <%= f.submit %>
     </div>
