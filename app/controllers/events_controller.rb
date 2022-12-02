@@ -17,6 +17,7 @@ class EventsController < ApplicationController
 
     if current_user
       @register = current_user.registrations.find_by(event_id: @event.id)
+      # @invite = Registration.find_by(event_id: @event.id)
     end
   end
 

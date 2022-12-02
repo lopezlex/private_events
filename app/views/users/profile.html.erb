@@ -9,9 +9,9 @@
   </div>
 
   <% if @attended_events.present? %>
-      <h3>Attended events</h3>
+      <h3>Events</h3>
       <% if @attended_events.upcoming.present?%>
-        <h4>Upcoming</h4>
+        <h5>Upcoming</h5>
         <% @attended_events.upcoming.each do |event|%>
           <div class="registration">
             <div class="name">
@@ -21,7 +21,7 @@
         <%end%>
       <%end%>
       <% if @attended_events.past.present?%>
-        <h4>Past</h4>
+        <h5>Past</h5>
         <% @attended_events.past.each do |event|%>
           <div class="registration">
             <div class="name">

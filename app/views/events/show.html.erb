@@ -12,6 +12,20 @@
             <%= link_to "Edit", edit_event_path(@event), class: "button"%>
             <%= link_to "Delete", @event, class: "button", method: :delete, data: {confirm: "Really?!"} %>
           </section>
+          <div class="card p-3 text-center">
+            <% User.all.each do |user|%>
+              <% unless user == current_user%>
+              
+                <span class="border-bottom pb-1"><%= user.email %>
+                  <%if user.registrations.find_by(event_id: @event.id) %>
+                    <%= button_to "Cancel Invitation", event_registration_path(@event, user_id: user.id), method: :delete%>
+                  <%else%>
+                    <%= button_to "Invite", event_registrations_path(@event, user_id: user.id)%>
+                  <%end%>
+                </span>
+              <%end%>
+            <%end%>
+          </div>
         <%else%>
           <div class="register">
             <%= register_or_unregister_button(@event, @register)%>
